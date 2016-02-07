@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fakeos Launcher</title>
+</head>
+<body>
+
+<p>Click the button to open an about:blank page in a new browser window that is 200px wide and 100px tall.</p>
+
+<button onclick="startLauncher()">Open Launcher</button>
+
+<script>
+function startLauncher() {
+    var myWindow = window.open("./launcher.html", "", "width=300, height=500, top=200, left=700");
+}
+
+</script>
+
+</body>
+</html>

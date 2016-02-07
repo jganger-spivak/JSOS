@@ -1,0 +1,31 @@
+{
+  "name": "lockr",
+  "version": "0.8.4",
+  "author": {
+    "name": "Dimitris Tsironis",
+    "email": "tsironis.dimitris@gmail.com"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tsironis/lockr.git"
+  },
+  "license": "MIT",
+  "files": [
+    "lockr.js",
+    "lockr.min.js",
+    "LICENSE"
+  ],
+  "main": "lockr.js",
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-jasmine": "~0.6.1",
+    "grunt-contrib-watch": "~0.2.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt": "~0.4.0",
+    "grunt-cli": "~0.1.6"
+  }
+}

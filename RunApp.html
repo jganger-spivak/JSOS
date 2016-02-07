@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="./lockr-master/lockr.min.js"></script>
+    <title>Custom Application</title>
+</head>
+<body>
+    <input type="text" id="filename1"><br>
+    <button type="button" onclick="runJS();">Run Application</button><br>
+    <script defer>
+    function runJS() {
+        var filetext = Lockr.get(document.getElementById("filename1").value);
+        eval(filetext);
+    }
+    </script>
+</body>
+</html>
