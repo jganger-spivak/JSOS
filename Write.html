@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Write</title>
+    <script src="./lockr-master/lockr.min.js"></script>
+</head>
+<body>
+    <h1>Write</h1><br>
+    <input type="text" id="filename1"><br>
+    Filename is above.<br>
+    <textarea rows="10" columns="10" id="textarea1"></textarea><br>
+    <button type="button" onclick="save()">Save</button>
+    <button type="button" onclick="load()">Load</button>
+    <script defer>
+    function save() {
+        var filetext = document.getElementById("textarea1").value;
+        var filename = document.getElementById("filename1").value;
+        Lockr.set(filename, filetext);
+    }
+    
+    function load() {
+        var filename = document.getElementById("filename1").value;
+        var filetext = Lockr.get(filename);
+        document.getElementById("textarea1").value = filetext;
+    }
+    </script>
+</body>
+</html>
