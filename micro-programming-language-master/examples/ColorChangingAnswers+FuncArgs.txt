@@ -1,0 +1,11 @@
+This demonstrates function arguments, and uses them to make a DOM-editing function that can be used
+to change the color on anything in a page, without using any embedded JavaScript (the run javascript command).
+start function::changecolor::element::clr
+make private variable::target
+get by id::element::target
+set variable::target.style.color::clr
+end
+
+make variable::favcolor
+ask::"Whats your favorite color?"::favcolor
+run function::changecolor::"testelement"::favcolor

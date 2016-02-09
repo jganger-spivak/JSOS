@@ -1,0 +1,27 @@
+Note: There is a DIV element built into the main page with a id of testelement, you can play around outputting to this.
+
+==OUTPUT==
+say::<value>
+write::<value>
+log::<value>
+change contents::<value>::<new contents>
+
+==VARIABLES==
+make variable::<variable name>
+make private variable::<variable name>
+set variable::<variable name>::<variable value>
+
+==OTHER==
+run javascript::<javascript expression>
+end
+compare::<input variable>::<value to be compared> … end
+
+==INPUT==
+ask::<prompt>::<exit variable>
+
+==FUNCTIONS==
+start function::<function name>::<argument1>::<argument2>...::<argumentN> … end
+run function::<function name>::<argument1>::<argument2>...::<argumentN>
+
+==DOM==
+get by id::<id>::<exit variable>

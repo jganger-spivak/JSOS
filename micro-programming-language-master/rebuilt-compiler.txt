@@ -1,0 +1,62 @@
+set variable::dblcolon::":" + ":"
+###Setup (all that nasty boilerplate)###
+start function::newrun::input
+set variable::codeline::[]
+make variable::output
+set variable::codeline::input.split(dblcolon)
+run function::outputproc::codeline
+run function::variablesproc::codeline
+run javascript::eval(output);
+end
+###Running the code###
+make private variable::code
+ask::"Enter your code:"::code
+run function::newrun::code
+###Input parser###
+start function::inputproc::input
+
+end
+###Output parser###
+start function::outputproc::input
+compare::input[0]::"say"
+set variable::output::"alert(" + input[1] + "); "
+end
+
+compare::input[0]::"write"
+set variable::output::"document.write(" + input[1] + "); "
+end
+
+compare::input[0]::"log"
+set variable::output::"console.log(" + input[1] + "); "
+end
+
+compare::input[0]::"change contents"
+set variable::output::input[1] + ".innerHTML = " + input[2] + "; "
+end
+end
+###Variables parser###
+start function::variablesproc::input
+compare::input[0]::"make variable"
+set variable::output::input[1] + " = null; "
+end
+
+compare::input[0]::"set variable"
+set variable::output::input[1] + " = " + input[2] + "; "
+end
+
+compare::input[0]::"make private variable"
+set variable::output::"var " + input[1] + " = null; "
+end
+end
+###Other parser###
+start function::otherproc::input
+
+end
+###Functions parser (oh god)###
+start function::functionsproc::input
+
+end
+###DOM parser###
+start function::domproc::input
+
+end

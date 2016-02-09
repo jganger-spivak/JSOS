@@ -1,0 +1,7 @@
+Here I was just playing around with some hacked CSS values I realized were available in variables. Have fun coloring!
+
+make variable::div1
+get by id::"testelement"::div1
+set variable::div1.style.color::"green"
+set variable::div1.style.border::"dotted"
+change contents::div1::"Totally not black!"

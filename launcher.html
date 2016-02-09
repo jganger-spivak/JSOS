@@ -3,6 +3,7 @@
 <head>
 <title>Launcher</title>
 <script src="./lockr-master/lockr.min.js"></script>
+<script src="./micro-programming-language-master/microlang.js"></script>
 </head>
 <body>
 <h1>Launcher</h1>
@@ -41,8 +42,14 @@ files = listAllItems();
     }
     
     function extractAndRunCode(keyindex) {
+        var filetype = files[keyindex].split(".")[1];
         var code = Lockr.get(files[keyindex]);
-        eval(code);
+        if (filetype == "js") {
+            eval(code);
+        }
+        if (filetype == "mpl") {
+            compandrun(code);
+        }
     }
     
     function extractText(keyindex) {

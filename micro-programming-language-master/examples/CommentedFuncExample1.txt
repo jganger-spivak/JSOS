@@ -1,0 +1,17 @@
+start function::hello
+This starts a new function, a block of code that can be run over and over
+say::"Hello!"
+This is the inside of the function, what it does
+end
+This is the end of the function
+
+start function::goodbye
+start another function, with a different name
+say::"Goodbye!"
+end
+end the second function
+
+run function::hello
+These commands run a function by name, this runs the first one
+run function::goodbye
+and this runs the second one.
