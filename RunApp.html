@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="./lockr-master/lockr.min.js"></script>
+    <script src="./micro-programming-language-master/microlang.js"></script>
+    <title>Custom Application</title>
+</head>
+<body>
+    <input type="text" id="filename1"><br>
+    <button type="button" onclick="extractAndRunCode()">Run Application</button><br>
+    <script defer>
+    function runJS() {
+        var filetext = Lockr.get(document.getElementById("filename1").value);
+        eval(filetext);
+    }
+    
+    function extractAndRunCode() {
+        var filename = document.getElementById("filename1").value;
+        var filetype = filename.split(".")[1];
+        var code = Lockr.get(filename);
+        if (filetype == "js") {
+            eval(code);
+        }
+        if (filetype == "mpl") {
+            compandrun(code);
+        }
+    }
+    </script>
+</body>
+</html>
