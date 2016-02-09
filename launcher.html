@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Launcher</title>
+<script src="./lockr-master/lockr.min.js"></script>
+<script src="./micro-programming-language-master/microlang.js"></script>
+</head>
+<body>
+<h1>Launcher</h1>
+<ul>
+    <li><a onclick="window.open('http://www.google.com')">Web</a></li>
+    <li><a href="./Write.html">Write</a></li>
+    <li><a href="./RunApp.html">Run Application</a></li>
+</ul>
+<hr>
+<h2>File Managment</h2><br>
+<button type="button" onclick="showFiles()">Show Files</button><br>
+<div id="filelist1"><hr></div>
+<script>
+var files = "";
+files = listAllItems();
+    
+    function showFiles() {
+        var filelist = document.getElementById("filelist1");
+        filelist.innerHTML = "<hr>"
+        files = listAllItems();
+        for (var i = 0; i < files.length; i++) {
+            if (files[i] != undefined) {
+                filelist.innerHTML += files[i] + ": <button type='button' onclick='extractAndRunCode(" + i + ")'>Open as Application</button><button type='button' onclick='extractText(" + i + ")'>Show Text</button><button type='button' onclick='removeFile(" + i + ")'>Delete</button><hr>";
+            }
+        }
+    }
+    	
+    function listAllItems() {
+        var allItems = [];
+        for (i=0; i<=localStorage.length-1; i++) {  
+            var key;
+            key = localStorage.key(i);
+            allItems[allItems.length + 1] = key;
+        }
+        return allItems;
+    }
+    
+    function extractAndRunCode(keyindex) {
+        var filetype = files[keyindex].split(".")[1];
+        var code = Lockr.get(files[keyindex]);
+        if (filetype == "js") {
+            eval(code);
+        }
+        if (filetype == "mpl") {
+            compandrun(code);
+        }
+    }
+    
+    function extractText(keyindex) {
+        var text = Lockr.get(files[keyindex]);
+        alert(text);
+    }
+    
+    function removeFile(keyindex) {
+        if (confirm("Are you sure? You cannot recover deleted files.")) {
+            var filename = files[keyindex];
+            Lockr.rm(filename);
+            alert("File Deleted.");
+			showFiles();
+        }
+    }
+</script>
+</body>
+</html>
