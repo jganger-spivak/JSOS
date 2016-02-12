@@ -32,7 +32,7 @@ files = listAllItems();
         files = listAllItems();
         for (var i = 0; i < files.length; i++) {
             if (files[i] != undefined) {
-                filelist.innerHTML += files[i] + ": <button type='button' onclick='extractAndRunCode(" + i + ")'>Open as Application</button><button type='button' onclick='extractText(" + i + ")'>Show Text</button><button type='button' onclick='removeFile(" + i + ")'>Delete</button><hr>";
+                filelist.innerHTML += files[i] + ": <button type='button' onclick='extractAndRunCode(" + i + ")'>Execute</button><button type='button' onclick='extractText(" + i + ")'>Show Text</button><button type='button' onclick='removeFile(" + i + ")'>Delete</button><hr>";
             }
         }
     }
@@ -55,6 +55,13 @@ files = listAllItems();
         }
         if (filetype == "mpl") {
             compandrun(code);
+        }
+        if (filetype == "svg") {
+            document.body.innerHTML += "<svg width='200' height='200'>" + code + "</svg>"
+        }
+        if (filetype == "html") {
+            var newwin = window.open("about:blank");
+            newwin.document.write(code);
         }
     }
     
