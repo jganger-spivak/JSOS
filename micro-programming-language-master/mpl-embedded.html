@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./microlang.js"></script>
+</head>
+<body>
+<script>
+var tags = [];
+tags = document.getElementsByTagName("mpl");
+for (var i = 0; i < tags.length; i++) {
+    compandrun(tags.innerHTML);
+}
+</script>
+<mpl>
+say::"Hello!"
+</mpl>
+</body>
+</html>
