@@ -14,16 +14,21 @@
 </ul>
 <hr>
 <h2>File Managment</h2><br>
-<button type="button" onclick="showFiles()">Show Files</button>
 <button type="button" onclick="openExternalFile()">Open External File</button><br>
 <input type="text" id="filename1"><br>
 <div id="filelist1"><hr></div>
 <script>
 var files = "";
 files = listAllItems();
+refreshFiles()
     function openExternalFile() {
         var filename = document.getElementById("filename1").value;
         window.location.assign("./" + filename);
+    }
+    
+    function refreshFiles() {
+        showFiles()
+        window.setTimeout(refreshFiles, 500)
     }
     
     function showFiles() {
@@ -57,7 +62,8 @@ files = listAllItems();
             compandrun(code);
         }
         if (filetype == "svg") {
-            document.body.innerHTML += "<svg width='200' height='200'>" + code + "</svg>"
+            var newwin = window.open("about:blank", "", "width=500, height=500");
+            newwin.document.write("<svg width='500' height='500'>" + code + "</svg>");
         }
         if (filetype == "html") {
             var newwin = window.open("about:blank");
