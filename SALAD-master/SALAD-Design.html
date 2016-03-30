@@ -48,12 +48,21 @@ function setCommand() {
 }
 
 function saveToJSOS() {
+    var filename = document.getElementById("animationname").value;
+    var ani = new Animation();
+    ani.frames = commands;
+    Lockr.set(filename, ani);
+}
+
+function Animation() {
+    this.frames = [];
+    this.count = 0;
     
 }
 
 </script>
 <h1>SALAD - Design</h1>
-<form>
+<form>      
 <p>
 <h3>Advanced Controls:</h3>
 Frame:<br>
@@ -73,7 +82,9 @@ Insert Command:<br>
 <option value="moveRight">moveRight</option>
 </select><input type="text" id="commandArg"><button type="button" onclick="setCommand()">Set Command</button><br>
 <hr>
-<a href="javascript:animate()">Animate</a>
+<a href="javascript:animate()">Animate</a><hr>
+<button type="button" onclick="saveToJSOS()">Save to JSOS</button><br>
+<input type="text" id="animationname">
 </p>
 </form>
 <p id="simplecmds"></p>
