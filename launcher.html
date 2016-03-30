@@ -4,6 +4,7 @@
 <title>Launcher</title>
 <script src="./lockr-master/lockr.min.js"></script>
 <script src="./micro-programming-language-master/microlang.js"></script>
+<script src="./SALAD-master/silver.js"></script>
 </head>
 <body>
 <h1>Launcher</h1>
@@ -20,8 +21,20 @@
 <div id="filelist1"><hr></div>
 <script>
 var files = "";
+var sprite = makesprite();
 files = listAllItems();
 refreshFiles()
+function animate(count, commands) {
+    alert(commands);
+    if (count == commands.length) {
+        count = 0;
+        return;
+    }
+    eval(commands[count]);
+    count++;
+    setTimeout(animate, 50);
+}
+
     function openExternalFile() {
         var filename = document.getElementById("filename1").value;
         window.location.assign("./" + filename);
@@ -69,6 +82,9 @@ refreshFiles()
         if (filetype == "html") {
             var newwin = window.open("about:blank");
             newwin.document.write(code);
+        }
+        if (filetype == "ani") {
+            animate(code.count, code.frames);
         }
     }
     
