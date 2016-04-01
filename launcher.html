@@ -21,16 +21,17 @@
 <div id="filelist1"><hr></div>
 <script>
 var files = "";
+count = 0;
+var frames = [];
 var sprite = makesprite();
 files = listAllItems();
 refreshFiles()
-function animate(count, commands) {
-    alert(commands);
-    if (count == commands.length) {
+function animate() {
+    if (count == frames.length) {
         count = 0;
         return;
     }
-    eval(commands[count]);
+    eval(frames[count]);
     count++;
     setTimeout(animate, 50);
 }
@@ -84,7 +85,9 @@ function animate(count, commands) {
             newwin.document.write(code);
         }
         if (filetype == "ani") {
-            animate(code.count, code.frames);
+            count = 0;
+            frames = code;
+            animate()
         }
     }
     
