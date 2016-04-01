@@ -49,9 +49,7 @@ function setCommand() {
 
 function saveToJSOS() {
     var filename = document.getElementById("animationname").value;
-    var ani = new Animation();
-    ani.frames = commands;
-    Lockr.set(filename, ani);
+    Lockr.set(filename, commands);
 }
 
 function Animation() {
