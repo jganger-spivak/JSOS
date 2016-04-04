@@ -5,20 +5,20 @@
 <script src="./lockr-master/lockr.min.js"></script>
 <script src="./micro-programming-language-master/microlang.js"></script>
 <script src="./SALAD-master/silver.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/basic.css">
 </head>
 <body>
 <h1>Launcher</h1>
 <ul>
-    <li><a onclick="window.open('http://www.google.com')">Web</a></li>
-    <li><a href="./Write.html">Write</a></li>
-    <li><a href="./RunApp.html">Run Application</a></li>
-    <li><a href="./SALAD-master/SALAD-Design.html">SALAD Design</a></li>
+    <li><h4><a href="./Write.html" class="applink">Write</a></h4></li>
+    <li><h4><a href="./RunApp.html" class="applink">Run Application</a></h4></li>
+    <li><h4><a href="./SALAD-master/SALAD-Design.html" class="applink">SALAD Design</a></h4></li>
 </ul>
 <hr>
 <h2>File Managment</h2><br>
 <button type="button" onclick="openExternalFile()">Open External File</button><br>
 <input type="text" id="filename1"><br>
-<div id="filelist1"><hr></div>
+<div id="filelist1"></div>
 <script>
 var files = "";
 count = 0;
@@ -48,11 +48,11 @@ function animate() {
     
     function showFiles() {
         var filelist = document.getElementById("filelist1");
-        filelist.innerHTML = "<hr>"
+        filelist.innerHTML = "";
         files = listAllItems();
         for (var i = 0; i < files.length; i++) {
             if (files[i] != undefined) {
-                filelist.innerHTML += files[i] + ": <button type='button' onclick='extractAndRunCode(" + i + ")'>Execute</button><button type='button' onclick='extractText(" + i + ")'>Show Text</button><button type='button' onclick='removeFile(" + i + ")'>Delete</button><hr>";
+                filelist.innerHTML += files[i] + ": <button type='button' onclick='extractAndRunCode(" + i + ")'>Execute</button><button type='button' onclick='extractText(" + i + ")'>Show Text</button><button type='button' onclick='removeFile(" + i + ")'>Delete</button><br><br>";
             }
         }
     }
