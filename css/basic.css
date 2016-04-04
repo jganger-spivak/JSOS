@@ -1,0 +1,22 @@
+body {
+    background-image: url("../images/blue-abstract-background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#filelist1 {
+    border: solid #5599FF;
+    font-family: "Courier New", Courier, serif;
+    -webkit-border-radius: 16px;
+}
+
+.applink {
+    color: crimson;
+    border: solid crimson 2px;
+    text-decoration: initial;
+    -webkit-border-radius: 16px;
+}
+
+h1, h2 {
+    font-family: "Courier New", Courier, serif;
+}
