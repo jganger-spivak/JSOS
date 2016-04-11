@@ -17,6 +17,12 @@ body {
     -webkit-border-radius: 16px;
 }
 
+.filebutton {
+    -webkit-border-radius: 5px;
+    background: #00DD00;
+    border: #00DD00;
+}
+
 h1, h2 {
     font-family: "Courier New", Courier, serif;
 }
