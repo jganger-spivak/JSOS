@@ -52,7 +52,7 @@ function animate() {
         files = listAllItems();
         for (var i = 0; i < files.length; i++) {
             if (files[i] != undefined) {
-                filelist.innerHTML += files[i] + ": <button type='button' onclick='extractAndRunCode(" + i + ")'>Execute</button><button type='button' onclick='extractText(" + i + ")'>Show Text</button><button type='button' onclick='removeFile(" + i + ")'>Delete</button><br><br>";
+                filelist.innerHTML += files[i] + ": <button type='button' onclick='extractAndRunCode(" + i + ")' class='filebutton'>Execute</button> <button type='button' onclick='extractText(" + i + ")' class='filebutton'>Show Text</button> <button type='button' onclick='removeFile(" + i + ")' class='filebutton'>Delete</button><br><br>";
             }
         }
     }
