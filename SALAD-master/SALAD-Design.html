@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./silver.js"></script>
+<script src="../lockr-master/lockr.min.js"></script>
+<title>SALAD Design</title>
+</head>
+<body>
+<script>
+count = 0;
+var commands = [];
+var simpleCommands = [];
+var sprite = makesprite();
+function animate() {
+    if (count == commands.length) {
+        count = 0;
+        return;
+    }
+    eval(commands[count]);
+    count++;
+    setTimeout(animate, 50);
+}
+
+function saveFrame() {
+    var framenum = document.getElementById("framenum").value;
+    var usercmd = document.getElementById("usercmd").value;
+    
+    commands[framenum] = usercmd;
+    framenum.value++;
+}
+
+function setCommand() {
+    var usercmd = document.getElementById("usercmd");
+    var selectcmd = document.getElementById("selectcommand").value;
+    var cmdarg = document.getElementById("commandArg").value;
+    var framenum = document.getElementById("framenum");
+    var simplecmds = document.getElementById("simplecmds");
+    if (selectcmd == "setText") {
+        usercmd.value = "sprite.innerHTML = '" + cmdarg + "'";
+    } else {
+        usercmd.value = "sprite." + selectcmd + "(" + cmdarg + ")";
+    }
+    saveFrame();
+    framenum.value++;
+    simpleCommands[simpleCommands.length] = selectcmd + " " + cmdarg;
+    simplecmds.innerHTML = simpleCommands;
+    
+}
+
+function saveToJSOS() {
+    var filename = document.getElementById("animationname").value;
+    Lockr.set(filename, commands);
+}
+
+function Animation() {
+    this.frames = [];
+    this.count = 0;
+    
+}
+
+</script>
+<h1>SALAD - Design</h1>
+<form>      
+<p>
+<h3>Advanced Controls:</h3>
+Frame:<br>
+<input type="number" id="framenum" value="0" min="0"><br>
+Insert Command:<br>
+<input type="text" id="usercmd"><br>
+<button type="button" onclick="saveFrame()">Save Frame</button><br>
+<hr>
+<h3>Basic Controls: </h3>
+<select id="selectcommand">
+<option value="setX">setX</option>
+<option value="setY">setY</option>
+<option value="setText">setText</option>
+<option value="moveUp">moveUp</option>
+<option value="moveDown">moveDown</option>
+<option value="moveLeft">moveLeft</option>
+<option value="moveRight">moveRight</option>
+</select><input type="text" id="commandArg"><button type="button" onclick="setCommand()">Set Command</button><br>
+<hr>
+<a href="javascript:animate()">Animate</a><hr>
+<button type="button" onclick="saveToJSOS()">Save to JSOS</button><br>
+<input type="text" id="animationname">
+</p>
+</form>
+<p id="simplecmds"></p>
+</body>
+</html>
