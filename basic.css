@@ -1,0 +1,48 @@
+body {
+    background-image: url("../images/blue-abstract-background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#filelist1 {
+    border: solid #00FF00 5px;
+    font-family: "Courier New", Courier, serif;
+    -webkit-border-radius: 16px;
+    padding: 4px;
+    background-color: #009900;
+}
+
+.filebtncontainer {
+    border: solid #00FF00 2px;
+    -webkit-border-radius: 5px;
+
+}
+
+.applink {
+    color: #00FF00;
+    border: solid #00FF00 2px;
+    text-decoration: initial;
+    -webkit-border-radius: 16px;
+    padding: 5px;
+    background-color: #008800;
+}
+
+.applink:hover {
+    background-color: #006600;
+}
+
+.filebutton {
+    -webkit-border-radius: 5px;
+    background-color: #00DD00;
+    border: #00DD00;
+    padding: 5px;
+}
+
+.filebutton:hover {
+    background-color: #00AA00;
+    border: #00AA00;
+}
+
+h1, h2 {
+    font-family: "Courier New", Courier, serif;
+}
