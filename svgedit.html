@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./lockr-master/lockr.min.js"></script>
+<title>SVG Editor</title>
+</head>
+<body>
+<script>
+var image = "";
+
+function savePart() {
+
+}
+
+function setPart() {
+    var partCommand = document.getElementById("partCommand");
+    var partX = document.getElementById("partX");
+    var partY = document.getElementById("partY");
+}
+</script>
+<h1>SVG Editor</h1>
+<form>      
+<p>
+Command: <input type="text" id="partCommand">
+<button type="button" onclick="savePart()">Save Part</button><br>
+<hr>
+<h3>Basic Controls: </h3>
+<select id="selectcommand">
+<option value="circle">Circle</option>
+</select>Part X Position:<input type="text" id="partX"><br>Part Y Position:<input type="text" id="partY"><br>Part Radius:<input type="text" id="partRadius"><button type="button" onclick="setPart()">Set Part</button><br>
+<hr>
+<button type="button" onclick="saveToJSOS()">Save to JSOS</button><br>
+<input type="text" id="animationname">
+</p>
+</form>
+<p id="simplecmds"></p>
+</body>
+</html>
