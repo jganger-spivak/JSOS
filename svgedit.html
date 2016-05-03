@@ -8,31 +8,52 @@
 <script>
 var image = "";
 
-function savePart() {
-
+function showPart() {
+    var partCommand = document.getElementById("partCommand").value;
+    var testArea = document.getElementById("simplecmds");
+    testArea.innerHTML += partCommand;
 }
 
 function setPart() {
     var partCommand = document.getElementById("partCommand");
-    var partX = document.getElementById("partX");
-    var partY = document.getElementById("partY");
+    var partX = document.getElementById("partX").value;
+    var partY = document.getElementById("partY").value;
+    var partRadius = document.getElementById("partRadius").value;
+    var partType = document.getElementById("partType").value;
+    var partStroke = document.getElementById("partStroke").value;
+    var partFill = document.getElementById("partFill").value;
+    var partCode = "";
+    if (partType == "circle") {
+        partCode = '<circle cx="' + partX + '" cy="' + partY + '" r="' + partRadius + '" stroke="' + partStroke + '" stroke-width="4" fill="' + partFill + '" />';
+        partCommand.value = partCode;
+    } else if (partType == "rect") {
+        partCode = '<rect x="' + partX + '" y="' + partY + '" width="' + partRadius + '" height="' + partRadius + '" stroke="' + partStroke + '" stroke-width="4" fill="' + partFill + '"/>';
+        partCommand.value = partCode;
+    }
+}
+
+function saveToJSOS() {
+    var svgcode = document.getElementById("simplecmds").innerHTML;
+    var filename = document.getElementById("picturename").value;
+    Lockr.set(filename, svgcode);
 }
 </script>
 <h1>SVG Editor</h1>
 <form>      
 <p>
 Command: <input type="text" id="partCommand">
-<button type="button" onclick="savePart()">Save Part</button><br>
+<button type="button" onclick="showPart()">Show Part</button><br>
 <hr>
 <h3>Basic Controls: </h3>
-<select id="selectcommand">
+<select id="partType">
 <option value="circle">Circle</option>
-</select>Part X Position:<input type="text" id="partX"><br>Part Y Position:<input type="text" id="partY"><br>Part Radius:<input type="text" id="partRadius"><button type="button" onclick="setPart()">Set Part</button><br>
+<option value="rect">Rectangle</option>
+</select>Part X Position:<input type="text" id="partX"><br>Part Y Position:<input type="text" id="partY"><br>Part Radius:<input type="text" id="partRadius">Part Stroke Color:<input type="color" id="partStroke">Part Fill Color:<input type="color" id="partFill"><button type="button" onclick="setPart()">Set Part</button><br>
 <hr>
 <button type="button" onclick="saveToJSOS()">Save to JSOS</button><br>
-<input type="text" id="animationname">
+<input type="text" id="picturename">
 </p>
 </form>
-<p id="simplecmds"></p>
+<svg width="300" height="300" id="simplecmds"></svg>
 </body>
 </html>
