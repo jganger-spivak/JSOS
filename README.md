@@ -10,7 +10,7 @@ A web desktop with a small filesystem written in JavaScript.
 ## Task List:
  - [x] Improving the UI with CSS
  - [ ] Creating a basic word processor to output HTML
- - [ ] A image editor for SVG
+ - [x] A image editor for SVG
  - [ ] Expanding the capacity of the filesystem, probably through PHP and a server
  - I will check off these issues as I come to them.
 
