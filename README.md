@@ -8,7 +8,7 @@ A web desktop with a small filesystem written in JavaScript.
 * There is a bare-bones text editor, and a specialized application to create your own animations.
 
 ## Task List:
- - [x] Improving the UI with CSS
+ - [ ] Improving the UI with CSS
  - [ ] Creating a basic word processor to output HTML
  - [x] A image editor for SVG
  - [ ] Expanding the capacity of the filesystem, probably through PHP and a server
