@@ -18,6 +18,10 @@ function makesprite() {
   obj.moveDown = moveDown;
   obj.setY = setY;
   obj.setImage = setImage;
+  obj.radiusX = 0;
+  obj.radiusY = 0;
+  obj.isCollidingX = isCollidingX;
+  obj.isCollidingY = isCollidingY;
   
   return obj;
 }
@@ -52,6 +56,30 @@ function moveDown(pixels) {
 function moveUp(pixels) {
   var currentY = parseInt(this.style.top) || 0;
   this.style.top = (currentY - pixels) + "px";
+}
+
+function isCollidingX(sprite2) {
+    var x1 = parseInt(this.style.left) || 0;
+    var x2 = parseInt(sprite2.style.left) || 0;
+    var distance = x1 - x2;
+    console.log(distance);
+    distance = Math.abs(distance);
+    console.log(distance);
+    if ((this.radiusX + sprite2.radiusX) >= distance) {
+        return true;
+    } else { return false; }
+}
+
+function isCollidingY(sprite2) {
+    var y1 = parseInt(this.style.top) || 0;
+    var y2 = parseInt(sprite2.style.top) || 0;
+    var distance = y1 - y2;
+    console.log(distance);
+    distance = Math.abs(distance);
+    console.log(distance);
+    if ((this.radiusY + sprite2.radiusY) >= distance) {
+        return true;
+    } else { return false; }
 }
 //End Sprite
 

@@ -2,31 +2,15 @@
 <html>
 <head>
 <script src="./silver.js"></script>
-<script src="./Rebind.js"></script>
 </head>
 <body>
 <script>
-var sprite = makesprite();
-var commands = [];
-var count = 0;
-rbind.bindCommand("animate", "animate");
-rbind.bindCommand("say", "say");
-function say(msg) {
-    alert(msg);
-}
-rbind.runCommand(prompt());
-function animate() {
-    eval(commands[count]);
-    count++;
-    setTimeout(animate, 50)
-}
+var bob = makesprite();
+bob.innerHTML = "Bob";
+bob.moveRight(100);
+var fred = makesprite();
+fred.innerHTML = "Fred";
 
-commands[0] = "sprite.innerHTML = '[-_-]'";
-commands[1] = "sprite.moveRight(50)";
-commands[2] = "sprite.moveDown(50)";
-commands[3] = "sprite.moveLeft(50)";
-commands[4] = "sprite.moveUp(50)";
-commands[5] = "count = 0";
 </script>
 </body>
 </html>
