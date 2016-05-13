@@ -10,7 +10,7 @@ Your browser does not support the HTML5 canvas tag.
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 var prog1 = '  ctx.fillStyle = "#FF0000";  ctx.fillRect(count, 0, 25, 25);  ctx.fillStyle = "#0000FF";  ctx.fillRect(0, count, 25, 25);  ctx.fillStyle = "#00FF00";  ctx.fillRect(count, count, 25, 25);';
-var prog2 = '  ctx.fillStyle = "#FF0000";  ctx.fillRect(0, 0, count, count);  ctx.fillStyle = "#00FF00";  ctx.fillRect(0, 0, count/2, count/2);  ctx.fillStyle = "#0000FF";  ctx.fillRect(0, 0, count/4, count/4);  ctx.fillStyle = "#000000";  ctx.fillRect(0, 0, count/8, count/);';
+var prog2 = '  ctx.fillStyle = "#FF0000";  ctx.fillRect(0, 0, count, count);  ctx.fillStyle = "#00FF00";  ctx.fillRect(0, 0, count/2, count/2);  ctx.fillStyle = "#0000FF";  ctx.fillRect(0, 0, count/4, count/4);';
 function update() {
   ctx.fillStyle = "#FFFFFF";
   ctx.fillRect(0, 0, c.width, c.height);
@@ -19,7 +19,13 @@ function update() {
 }
 var count = 1;
 function render() {
-  eval(prog1);
+  //eval(prog2);
+  var rand1 = Math.floor((Math.random() * 10) + 1);
+  var rand2 = Math.floor((Math.random() * 10) + 1);
+  ctx.fillStyle = "#FF0000";
+  ctx.fillRect(rand1 + count, 0, 25, 25);
+  ctx.fillStyle = "#00FF00";
+  ctx.fillRect(rand2 + count, 25, 25, 25);
   count++;
   
 }
