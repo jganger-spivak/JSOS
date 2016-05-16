@@ -83,22 +83,30 @@ function isCollidingY(sprite2) {
 }
 //End Sprite
 
-//Data class and methods
-function Data () {
-  this.s = s;
-  this.g = g;
-}
-
-function s(key, data) {
-  localStorage[key] = data;
-}
-
-function g(key) {
-  return localStorage[key];
-}
-//End Data
-
-//Sound class and methods
-function playsound(soundfile) {
+function SilverCanvas() {
+  this.c = null;
+  this.ctx = null;
+  this.sprites = [];
+  this.count = 1;
   
+  this.setup = function(canvas) {
+    this.c = document.getElementById(canvas);
+    this.ctx = this.c.getContext("2d");
+  }
+  
+  this.update = function() {
+    this.ctx.fillStyle = "#FFFFFF";
+    this.ctx.fillRect(0, 0, this.c.width, this.c.height);
+    this.render();
+    window.setTimeout(this.update, 10);
+  }
+  
+  this.render = function() {
+    for (var i = 0; i < this.sprites.length; i++) {
+      var sprite = sprites[i];
+      sprite.renderSprite();
+    }
+    this.count++;
+  }
+  return this;
 }

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<head>
+<script src="./silver.js"></script>
+</head>
 <body>
 
 <canvas id="myCanvas" width="600" height="600" style="border:1px solid #c3c3c3;">
@@ -7,28 +10,23 @@ Your browser does not support the HTML5 canvas tag.
 </canvas>
 
 <script>
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-var prog1 = '  ctx.fillStyle = "#FF0000";  ctx.fillRect(count, 0, 25, 25);  ctx.fillStyle = "#0000FF";  ctx.fillRect(0, count, 25, 25);  ctx.fillStyle = "#00FF00";  ctx.fillRect(count, count, 25, 25);';
-var prog2 = '  ctx.fillStyle = "#FF0000";  ctx.fillRect(0, 0, count, count);  ctx.fillStyle = "#00FF00";  ctx.fillRect(0, 0, count/2, count/2);  ctx.fillStyle = "#0000FF";  ctx.fillRect(0, 0, count/4, count/4);';
-function update() {
-  ctx.fillStyle = "#FFFFFF";
-  ctx.fillRect(0, 0, c.width, c.height);
-  render();
-  window.setTimeout(update, 10);
+
+var sc = SilverCanvas();
+sc.setup("myCanvas");
+
+function RedCube() {
+  this.renderSprite = function() {
+    sc.ctx.fillStyle = "#FF0000";
+    sc.ctx.fillRect(sc.count, sc.count, sc.count, sc.count);
+    if (sc.count == 300) {
+      sc.count = 1;
+    }
+  }
+  return this;
 }
-var count = 1;
-function render() {
-  //eval(prog2);
-  var rand1 = Math.floor((Math.random() * 10) + 1);
-  var rand2 = Math.floor((Math.random() * 10) + 1);
-  ctx.fillStyle = "#FF0000";
-  ctx.fillRect(rand1 + count, 0, 25, 25);
-  ctx.fillStyle = "#00FF00";
-  ctx.fillRect(rand2 + count, 25, 25, 25);
-  count++;
-  
-}
+
+sc.sprites[sc.sprites.length] = RedCube();
+update();
 </script>
 
 </body>
