@@ -10,22 +10,37 @@ Your browser does not support the HTML5 canvas tag.
 </canvas>
 
 <script>
-
-var sc = SilverCanvas();
-sc.setup("myCanvas");
-
-function RedCube() {
+function Person() {
   this.renderSprite = function() {
-    sc.ctx.fillStyle = "#FF0000";
-    sc.ctx.fillRect(sc.count, sc.count, sc.count, sc.count);
-    if (sc.count == 300) {
-      sc.count = 1;
-    }
+    //Head
+    sc.circle("#00FF00", 75, 25, 25);
+    //Body
+    sc.rect("#FF0000", 50, 50, 50, 50);
+    //Arms
+    sc.rect("#FF0000", 25, 50, 25, 50);
+    sc.circle("#FF0000", 25, 75, 25);
+    sc.rect("#FF0000", 100, 50, 25, 50);
+    sc.circle("#FF0000", 125, 75, 25);
+    //Legs
+    sc.rect("#FF0000", 50, 75, 10, 100)
+    sc.rect("#FF0000", 85, 75, 10, 100)
   }
   return this;
 }
 
-sc.sprites[sc.sprites.length] = RedCube();
+function Ground() {
+  this.renderSprite = function() {
+    sc.rect("#00FF00", 0, 500, 600, 100);
+  }
+  return this;
+}
+
+var sc = SilverCanvas();
+sc.setup("myCanvas");
+sc.render = function() {
+  Ground().renderSprite();
+  Person().renderSprite();
+}
 update();
 </script>
 

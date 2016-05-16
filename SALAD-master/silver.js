@@ -98,15 +98,28 @@ function SilverCanvas() {
     this.ctx.fillStyle = "#FFFFFF";
     this.ctx.fillRect(0, 0, this.c.width, this.c.height);
     this.render();
+    this.count++;
     window.setTimeout(this.update, 10);
   }
   
   this.render = function() {
-    for (var i = 0; i < this.sprites.length; i++) {
-      var sprite = sprites[i];
-      sprite.renderSprite();
-    }
-    this.count++;
+    
+  }
+  
+  this.addSprite = function(sprite) {
+    this.sprites[this.sprites.length] = sprite;
+  }
+  
+  this.rect = function(color, x, y, width, height) {
+    this.ctx.fillStyle = color;
+    this.ctx.fillRect(x, y, width, height);
+  }
+  
+  this.circle = function(color, x, y, radius) { 
+    this.ctx.fillStyle = color;
+    this.ctx.beginPath();
+    this.ctx.arc(x, y, radius, 0, 2*Math.PI);
+    this.ctx.fill();
   }
   return this;
 }
