@@ -121,5 +121,17 @@ function SilverCanvas() {
     this.ctx.arc(x, y, radius, 0, 2*Math.PI);
     this.ctx.fill();
   }
+  
+  this.img = function(img, x, y) {
+	  var image = document.getElementById(img);
+	  this.ctx.drawImage(img, x, y);
+  }
+  
+  this.line = function(color, x1, y1, x2, y2) {
+		this.ctx.strokeStyle = color;
+		this.ctx.moveTo(x1, y1);
+		this.ctx.lineTo(x2, y2);
+		this.ctx.stroke();
+  }
   return this;
 }
