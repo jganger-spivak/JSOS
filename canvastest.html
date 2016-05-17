@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./silver.js"></script>
+</head>
+<body>
+
+<canvas id="myCanvas" width="600" height="600" style="border:1px solid #c3c3c3;">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<script>
+function Person() {
+  this.renderSprite = function() {
+    //Head
+    sc.circle("#00FF00", 75, 325, 25);
+    //Body
+    sc.rect("#FF0000", 50, 350, 50, 100);
+    //Arms
+    sc.rect("#FF0000", 25, 350, 25, 50);
+    sc.circle("#FF0000", 25, 375, 25);
+    sc.rect("#FF0000", 100, 350, 25, 50);
+    sc.circle("#FF0000", 125, 375, 25);
+    //Legs
+    sc.rect("#FF0000", 50, 375, 10, 125)
+    sc.rect("#FF0000", 95, 375, 10, 125)
+  }
+  return this;
+}
+
+function Ground() {
+  this.renderSprite = function() {
+    sc.rect("#00FF00", 0, 500, 600, 100);
+  }
+  return this;
+}
+
+var sc = SilverCanvas();
+sc.setup("myCanvas");
+sc.render = function() {
+  Ground().renderSprite();
+  Person().renderSprite();
+}
+update();
+</script>
+
+</body>
+</html>
