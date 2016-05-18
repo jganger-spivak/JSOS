@@ -27,7 +27,8 @@ function Rebind() {
             var regex = new RegExp(this.cmdnames[i] + " ", "")
             if (regex.test(codeline)) {
                 var arg = codeline.replace(this.cmdnames[i] + '', '');
-                eval(this.callbacks[i] + "('" + arg + "');");
+				var cmd = this.callbacks[i] + "('" + arg + "')";
+                eval(cmd);
             }
         }
     }

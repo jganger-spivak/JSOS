@@ -1,16 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="./silver.js"></script>
+<script src="./Rebind.js"></script>
 </head>
 <body>
 <script>
-var bob = makesprite();
-bob.innerHTML = "Bob";
-bob.moveRight(100);
-var fred = makesprite();
-fred.innerHTML = "Fred";
-
+rbind.bindCommand("p", "console.log");
+rbind.bindCommand("sA", "setVarA");
+rbind.bindCommand("sB", "setVarB");
+rbind.bindCommand("sC", "setVarC");
+rbind.bindCommand("sD", "setVarD");
+rbind.bindCommand("sO", "setVarO");
+rbind.bindCommand("sI", "setVarI");
+rbind.bindCommand("pVar", "printVar");
+rbind.bindCommand("cVar", "catVar");
+var A = "";
+function setVarA(contents) {
+  A = contents;
+}
+var B = "";
+function setVarB(contents) {
+  B = contents;
+}
+var C = "";
+function setVarC(contents) {
+  C = contents;
+}
+var D = "";
+function setVarD(contents) {
+  D = contents;
+}
+var O = "";
+var I = "";
+function setVarI(contents) {
+  I = contents;
+}
+function printVar(vname) {
+  console.log(eval(vname));
+}
+function catVar(vname) {
+  O = eval(vname + " + I");
+}
+function runProgram(codetext) {
+	var codelines = codetext.split("\n");
+	for (var i = 0; i < codelines.length; i++) {
+		rbind.runCommand(codelines[i]);
+	}
+}
+var prog1 = "sA This\nsI That\ncVar A\npVar O";
 </script>
 </body>
 </html>
