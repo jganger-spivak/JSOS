@@ -14,6 +14,8 @@ rbind.bindCommand("sO", "setVarO");
 rbind.bindCommand("sI", "setVarI");
 rbind.bindCommand("pVar", "printVar");
 rbind.bindCommand("cVar", "catVar");
+rbind.bindCommand("clr", "clearVars");
+rbind.bindCommand("pipe", "pipeVars");
 var A = "";
 function setVarA(contents) {
   A = contents;
@@ -41,13 +43,27 @@ function printVar(vname) {
 function catVar(vname) {
   O = eval(vname + " + I");
 }
+function clearVars() {
+  A = "";
+  B = "";
+  C = "";
+  D = "";
+  I = "";
+  O = "";
+}
+function pipeVars(vname) {
+	eval(vname + " = O");
+}
 function runProgram(codetext) {
 	var codelines = codetext.split("\n");
 	for (var i = 0; i < codelines.length; i++) {
 		rbind.runCommand(codelines[i]);
 	}
 }
-var prog1 = "sA This\nsI That\ncVar A\npVar O";
+
+var prog1 = "sA This\nsI That\ncVar A\npVar O\nclr ";
+var prog2 = "sA My\nsI";
+alert(prog1)
 </script>
 </body>
 </html>
