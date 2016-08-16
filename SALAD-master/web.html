@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SilverCanvas Web</title>
+<script src="./silver.js"></script>
+</head>
+<body>
+<canvas id="myCanvas" width="600" height="600" style="border:1px solid #c3c3c3;">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+<script>
+function Web() {
+  this.renderSprite = function() {
+    var x1 = getRandomInt(0, 600);
+	var y1 = getRandomInt(0, 600);
+    var x2 = getRandomInt(0, 600);
+	var y2 = getRandomInt(0, 600);
+	sc.line("#FF0000", x1, y1, x2, y2);
+  }
+  return this;
+}
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+var sc = SilverCanvas();
+sc.setup("myCanvas");
+sc.render = function() {
+  Web().renderSprite();
+  document.getElementById("count").innerHTML = sc.count;
+}
+
+
+
+</script>
+<br>
+Number of Lines:<div id="count"></div>
+<button type="button" onclick="update()">Start Animation</button>
+<button type="button" onclick="location.reload()">Reset Animation</button>
+</body>
+</html>
