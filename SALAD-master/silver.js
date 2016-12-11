@@ -82,6 +82,11 @@ function isCollidingY(sprite2) {
     } else { return false; }
 }
 //End Sprite
+//SilverCanvas
+//HERE
+//
+//
+//
 
 function SilverCanvas() {
   this.c = null;
