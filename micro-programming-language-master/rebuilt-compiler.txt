@@ -8,13 +8,13 @@ run function::outputproc::codeline
 run function::variablesproc::codeline
 run javascript::eval(output);
 end
-###Running the code###
-make private variable::code
-ask::"Enter your code:"::code
-run function::newrun::code
+
 ###Input parser###
 start function::inputproc::input
-
+compare::input[0]::"ask"
+set private variable::prmpt::codeline[1]
+set private variable::exit::codeline[2]
+set variable::output::exit + " = prompt(" + prmpt + ");"
 end
 ###Output parser###
 start function::outputproc::input

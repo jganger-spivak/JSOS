@@ -92,3 +92,16 @@ function newcomp(codetext) {
   }
   eval(compcode);
 }
+
+function compilefile(codetext) {
+  var codelines = [];
+  codelines = codetext.split("\n");
+  var compcode = "";
+  for (var i = 0; i < codelines.length; i++) {
+    compcode += compile(codelines[i]) + "\n";
+  }
+  if (__debug) {
+    console.log(compcode);
+  }
+  return compcode;
+}
